@@ -18,19 +18,35 @@ body {
 }
 
 .container {
-  max-width: 800px;
-  padding-top: 2rem;
+  max-width: 650px;
+  padding-top: 1.5rem;
+  padding-bottom: 0px;
+}
+
+header {
+  margin-bottom: 0.5rem;
+}
+
+main.container {
+  padding-top: 0;
+}
+
+main.container .section:first-child {
+  margin-top: 0;
 }
 
 .avatar {
   border-radius: 50%;
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
-  margin-bottom: var(--typography-spacing-vertical);
+  margin-bottom: 1rem;
   border: 4px solid rgba(16, 185, 129, 0.3);
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.1);
   transition: transform 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .avatar:hover {
@@ -41,36 +57,37 @@ body {
 header h1 {
   font-weight: 800;
   letter-spacing: -0.025em;
+  font-size: 2rem;
   background: linear-gradient(to right, #34d399, #10b981);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 header p {
   color: var(--muted-text);
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 .section {
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .section h3 {
   color: var(--primary);
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
   border-bottom: 1px solid rgba(16, 185, 129, 0.2);
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
   display: inline-block;
 }
 
 .items {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .item {
@@ -81,30 +98,23 @@ header p {
 .item>a,
 .item>div {
   /* Handling both links and divs if no url */
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 12px;
-  padding: 1.2rem;
+  padding: 0.8rem 1rem;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  min-height: 60px;
+  /* Ensures vertical centering is visible even on single-line items */
 }
-
-/* If the item is just text (no URL), it might not be an <a> tag in the script logic, 
-   but script.py generates <a> if url exists, else div.
-   Wait, script.py uses h("a")... if item.url else iframe. 
-   If no URL and no embed, it might not generate anything? 
-   Let's check script.py logic.
-   Line 79: items = frag( ... h("a"...) if item.url else ... )
-   Wait, if there is no URL, script.py tries to generate an iframe if embed_url exists.
-   If NEITHER exists, it might generate nothing!
-   
-   My data.toml has items without URLs (e.g. CV entries).
-   I need to fix script.py to handle items without URLs (just text content).
-*/
 
 .item a:hover {
   transform: translateY(-2px);
@@ -115,23 +125,23 @@ header p {
 
 .item h4 {
   color: var(--text-color);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.15rem;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .item h5 {
   /* Description */
   color: var(--muted-text);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.4;
   margin-bottom: 0;
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
 }
 
@@ -140,6 +150,7 @@ header p {
   flex-direction: row !important;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 0.5rem;
 }
 
 .items[style*="row"] .item {
@@ -147,10 +158,10 @@ header p {
 }
 
 .items[style*="row"] .item a {
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1.25rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
   border-radius: 9999px;
   /* Pill shape */
   background: rgba(16, 185, 129, 0.1);
@@ -164,7 +175,7 @@ header p {
 
 .items[style*="row"] .item h4 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .items[style*="row"] .item h5 {
