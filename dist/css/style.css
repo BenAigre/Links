@@ -1,38 +1,183 @@
+:root {
+  --primary: #10b981;
+  --primary-hover: #059669;
+  --background-color: #0f172a;
+  --card-background: rgba(30, 41, 59, 0.7);
+  --text-color: #e2e8f0;
+  --muted-text: #94a3b8;
+}
+
+body {
+  background: radial-gradient(circle at top left, #064e3b, transparent 40%),
+    radial-gradient(circle at bottom right, #065f46, transparent 40%),
+    #0f172a;
+  background-attachment: fixed;
+  color: var(--text-color);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 800px;
+  padding-top: 2rem;
+}
+
 .avatar {
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  objet-fit: cover;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
   margin-bottom: var(--typography-spacing-vertical);
+  border: 4px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+  border-color: var(--primary);
+}
+
+header h1 {
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  background: linear-gradient(to right, #34d399, #10b981);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: var(--muted-text);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
 }
 
 .section {
-  margin-bottom: var(--block-spacing-vertical);
+  margin-bottom: 3rem;
+}
+
+.section h3 {
+  color: var(--primary);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+  padding-bottom: 0.5rem;
+  display: inline-block;
 }
 
 .items {
   display: flex;
-  column-gap: var(--spacing);
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-[role="button"] > hgroup {
-  margin-bottom: 0;
-}
-
-[role="button"], iframe {
-  margin-bottom: var(--spacing);
+.item {
   width: 100%;
+}
+
+/* Base card style for items */
+.item>a,
+.item>div {
+  /* Handling both links and divs if no url */
+  display: block;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.2rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* If the item is just text (no URL), it might not be an <a> tag in the script logic, 
+   but script.py generates <a> if url exists, else div.
+   Wait, script.py uses h("a")... if item.url else iframe. 
+   If no URL and no embed, it might not generate anything? 
+   Let's check script.py logic.
+   Line 79: items = frag( ... h("a"...) if item.url else ... )
+   Wait, if there is no URL, script.py tries to generate an iframe if embed_url exists.
+   If NEITHER exists, it might generate nothing!
+   
+   My data.toml has items without URLs (e.g. CV entries).
+   I need to fix script.py to handle items without URLs (just text content).
+*/
+
+.item a:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.item h4 {
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.item h5 {
+  /* Description */
+  color: var(--muted-text);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin-bottom: 0;
 }
 
 .icon {
   width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
 }
 
-.item a {
-  display: flex;
-  gap: var(--spacing);
+/* Horizontal Layout for Links Section */
+.items[style*="row"] {
+  flex-direction: row !important;
+  flex-wrap: wrap;
   justify-content: center;
+}
+
+.items[style*="row"] .item {
+  width: auto;
+}
+
+.items[style*="row"] .item a {
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 9999px;
+  /* Pill shape */
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.items[style*="row"] .item a:hover {
+  background: rgba(16, 185, 129, 0.2);
+  transform: translateY(-2px);
+}
+
+.items[style*="row"] .item h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.items[style*="row"] .item h5 {
+  display: none;
+  /* Hide descriptions in button row if they exist */
+}
+
+@media (max-width: 600px) {
+  .items[style*="row"] {
+    flex-direction: column !important;
+  }
+
+  .items[style*="row"] .item {
+    width: 100%;
+  }
 }

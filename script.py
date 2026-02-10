@@ -97,11 +97,14 @@ def create_section(section: Section):
                     klass="icon",
                     src=item.icon,
                     alt=item.title,
-                    style=f"width: {section.icon_size};",
+                    style=f"width: {section.icon_size}; height: {section.icon_size};",
                 )
                 if item.icon
                 else None,
-                h("hgroup")(h("h4")(item.title), h("h5")(item.description)),
+                h("hgroup")(
+                    h("h4")(item.title),
+                    h("h5")(item.description) if item.description else None,
+                ),
             )
             if item.url
             else raw(f"""
@@ -115,16 +118,27 @@ def create_section(section: Section):
                 </iframe>
             """)
             if item.embed_url
-            else None
+            else h(
+                "div",
+                klass="content-card",
+            )(
+                h("hgroup")(
+                    h("h4")(item.title),
+                    h("h5")(item.description) if item.description else None,
+                )
+            )
         )
         for item in section.items
     )
 
+    header = []
+    if section.title:
+        header.append(h("h3")(section.title))
+    if section.description:
+        header.append(h("p")(section.description))
+
     return h("div", klass="section")(
-        h("hgroup")(
-            h("h3")(section.title),
-            h("p")(section.description),
-        ),
+        h("hgroup")(header) if header else None,
         h("div", klass="items", style=f"flex-direction: {section.direction}")(items),
     )
 
@@ -188,12 +202,7 @@ def create_header(data: Data):
 
 
 def create_footer():
-    return h("footer", klass="container")(
-        h("small")("Generated with "),
-        h("a", klass="", href="https://github.com/thevahidal/jake/", target="_blank")(
-            "Jake"
-        ),
-    )
+    return None
 
 
 def generate_html(data: Data):

@@ -1,53 +1,61 @@
-name = "Jake Gyllenhaal"
-description = "Accomplished actor, captivating with versatility and charisma."
-keywords = "Jake Gyllenhaal, actor, filmography, awards, versatile performances, Hollywood"
-image = "jake.webp"
+name = "Ben Sauer"
+description = "M.Sc. Biomass Technology | Interested in Process Technology for a sustainable Bioeconomy"
+keywords = "Biomass, Engineering, Sustainability, Python, LCA"
+image = "picture.jpg"
 theme = "dark"
-primary_color = "#d81b60"
-text_align = "center"
+primary_color = "#10b981"
+text_align = "left"
 gtag_id = "G-XLJ81DCZFV"
-base_url = "https://thevahidal.github.io/jake"
+base_url = "https://linktree.github.com/BenAigre/"
 
 [[sections]]
-title = "Movies"
-description = "Here are some of my movies"
-direction = "column"
-item_style = "outline"
-[[sections.items]]
-embed_url = "https://www.youtube.com/embed/x0gUY9ddjQY"
-[[sections.items]]
-title = "Nightcrawler"
-description = "A mesmerizing thriller delving into the dark world of crime journalism"
-url = "https://www.imdb.com/title/tt2872718/"
-[[sections.items]]
-title = "Brokeback Mountain"
-description = "A groundbreaking romantic drama challenging societal expectations"
-url = "https://www.imdb.com/title/tt0388795/"
-[[sections.items]]
-title = "Prisoners"
-description = "A gripping thriller entangling a detective in a web of secrets during a kidnapping investigation"
-url = "https://www.imdb.com/title/tt1392214/"
-
-
-[[sections]]
-title = "Links"
-description = "Look for me on these websites"
+title = ""
 direction = "row"
 item_style = "filled"
 icon_size = "30px"
+
 [[sections.items]]
-icon = "https://cdn.simpleicons.org/instagram/ffffff"
-title = "Instagram"
-url = "https://www.instagram.com/jakegyllenhaal"
+icon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'/%3E%3C/svg%3E"
+title = "Linkedin"
+url = "https://www.linkedin.com/in/ben-sauer/"
+
 [[sections.items]]
-icon = "https://cdn.simpleicons.org/imdb/ffffff"
-title = "IMDb"
-url = "https://www.imdb.com/name/nm0350453/"
+icon = "https://cdn.simpleicons.org/github/ffffff"
+title = "Github"
+url = "https://github.com/BenAigre"
+
 [[sections.items]]
-icon = "https://cdn.simpleicons.org/wikipedia/ffffff"
-title = "Wikipedia"
-url = "https://en.wikipedia.org/wiki/Jake_Gyllenhaal"
+title = "Substack"
+icon = "https://cdn.simpleicons.org/substack/ffffff"
+url = "https://substack.com/@benfsauer"
+
+[[sections]]
+title = "Education"
+description = "Special interest: bioprocess development and modelling, data-integration, LCSA"
+direction = "column"
+item_style = "outline"
+
 [[sections.items]]
-title = "Rotten Tomatoes"
-icon = "https://cdn.simpleicons.org/rottentomatoes/ffffff"
-url = "https://www.rottentomatoes.com/celebrity/jake_gyllenhaal"
+title = "M.Sc. Biomass Technology | Technical University Munich"
+description = "April 2025 - Present | Current Grade: 1.1"
+
+[[sections.items]]
+title = "B.Sc. Business Engineering | Maastricht University"
+description = "August 2024 | Summa Cum Laude"
+
+[[sections]]
+title = "Professional Experience"
+direction = "column"
+item_style = "outline"
+
+[[sections.items]]
+title = "Intern, Bioprocess Engineering Lab | TUM Straubing"
+description = "Nov 2025 - Feb 2026"
+
+[[sections.items]]
+title = "Intern, Thesis in Process Technology Development, afterwards PM for Plastic Composite Recycling | igus SE"
+description = "Jan 2024 - March 2025"
+
+[[sections.items]]
+title = "Intern, Voluntary Ecological Year | Institute of Biology, Univ. of Siegen"
+description = "Aug 2020 - July 2021"
