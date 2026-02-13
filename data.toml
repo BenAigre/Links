@@ -6,7 +6,7 @@ theme = "dark"
 primary_color = "#10b981"
 text_align = "center"
 gtag_id = "G-XLJ81DCZFV"
-base_url = "https://linktree.github.com/BenAigre/"
+base_url = "https://www.bsauer.eu"
 
 [[sections]]
 title = ""
@@ -31,7 +31,7 @@ url = "https://substack.com/@benfsauer"
 
 [[sections.items]]
 title = "Email"
-icon = "https://cdn.simpleicons.org/mail/ffffff"
+icon = "https://cdn.simpleicons.org/Email/ffffff"
 url = "mailto:bensauer@protonmail.com"
 
 
